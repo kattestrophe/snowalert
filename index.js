@@ -13,7 +13,7 @@ app.listen(app.get('port'), function() {
 //Weather
 app.all('/getWeather', function (request, response) {
 	  var openWeatherURL = 'http://api.openweathermap.org/data/2.5/find?q=Chicago&units=metric&appid=2d589af36e84627d0b7ea0a51ceccf0c';
-    processGet(request, response, variationStatusAPIUrl);
+    processGet(request, response, openWeatherURL);
 );
 
 //Function to handle all Http Get Requests
