@@ -15,11 +15,7 @@ app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 
 });
-//Weather
-app.all('/getWeather', function(request, response) {
-    var openWeatherURL = 'http://api.openweathermap.org/data/2.5/forecast?q=Chicago&units=metric&appid=2d589af36e84627d0b7ea0a51ceccf0c';
-    processGet(request, response, openWeatherURL);
-});
+//endpoint for testing SMS
 app.all('/snowText', function(request, response) {
         twilio.messages.create({
             to: "+18473379845",
@@ -35,12 +31,12 @@ app.all('/snowText', function(request, response) {
                 response.status(500).send(err);
         });
     })
-    //Weather
+//Main endpoint
 app.all('/weather', function(request, response) {
     var openWeatherURL = 'http://api.openweathermap.org/data/2.5/forecast?q=Chicago&units=metric&appid=2d589af36e84627d0b7ea0a51ceccf0c';
     processGet(request, response, openWeatherURL);
 });
-//Function to handle all Http Get Requests
+//make call with unirest
 function processGet(requestFromClient, responseToClient, targetUrl, query) {
     var Request = unirest.get(targetUrl)
         .header(requestFromClient.headers)
@@ -56,13 +52,13 @@ function processGet(requestFromClient, responseToClient, targetUrl, query) {
                 var plist = _.filter(_.filter(response.body.list, function(o) {
                     return ((o.dt * 1000) > startT && (o.dt * 1000) < endT);
                 }), function(p) {
-                    return (p.weather[0].description).toUpperCase().indexOf("RAIN") !== -1;
+                    return (p.weather[0].description).toUpperCase().indexOf("SNOW") !== -1;
                 })
                 if (plist.length > 0) {
                     twilio.messages.create({
                         to: "+18473379845",
                         from: "+16305239634",
-                        body: "Hey Swagata! Take an umbrella tomorrow! It will rain."
+                        body: "Hey Swagata! Take your warm coat tomorrow! It will snow."
                     }, function(err, message) {
                         console.log(message.sid);
                         console.log(message.status);
