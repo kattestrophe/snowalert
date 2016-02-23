@@ -66,7 +66,7 @@ function processGet(requestFromClient, responseToClient, targetUrl, query) {
                 }
                 responseToClient.status(response.code).send(plist);
             } else {
-                responseToClient.status(200).send(oList);
+                responseToClient.status(500).send(response.code);
             }
         });
 }
