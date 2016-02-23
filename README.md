@@ -3,13 +3,16 @@
 ### What the app does
 
 Looks at a weather API from http://openweathermap.org/ and figures out if it's
-going to snow the next day between 9 am and 7 pm. If yes, the program uses the
-Twilio API to send a text alert to my wife, reminding her to wear a coat the
+going to snow the next day between 9 am and 7 pm in Chicago. If yes, the program
+uses the Twilio API to send a text alert to my wife, reminding her to wear a coat the
 day after.
 
 ### How to run
 `curl https://shrouded-river-30351.herokuapp.com/weather`
 I have a cron job setup on my laptop that runs this in the evening.
+
+Alternatively,
+click [here](https://shrouded-river-30351.herokuapp.com/)
 
 ### Basic design
 
@@ -21,5 +24,5 @@ openweathermap for a 5 day report.
 
 ### Future iterations
  - Remove all the hardcoding
- - Expose a web endpoint to register for snow alerts
+ - Expose a web endpoint to register for snow alerts, by city.
  - Expose mesasge.uri for updates checking.
