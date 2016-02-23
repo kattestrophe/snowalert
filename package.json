@@ -7,7 +7,11 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "datejs": "^1.0.0-rc3",
+    "express": "^4.13.4",
+    "lodash": "^4.5.1",
+    "twilio": "^3.0.0-rc1",
+    "unirest": "^0.4.2"
   },
   "engines": {
     "node": "0.12.7"
@@ -21,8 +25,5 @@
     "heroku",
     "express"
   ],
-  "license": "MIT",
-  "devDependencies": {
-    "unirest": "^0.4.2"
-  }
+  "license": "MIT"
 }
